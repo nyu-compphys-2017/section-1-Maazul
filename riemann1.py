@@ -1,22 +1,23 @@
 # This is a python file! The '#' character indicates that the following line is a comment.
-From __future__ import division
+from __future__ import division
 import numpy as np
 
-# The following is an example for how to define a function in Python
-# def tells the compiler that hello_world is the name of a function
-# this implementation of hello_world takes a string as an argument,
-# which has default value of the empty string. If the user calls
-# hello_world() without an argument, then the compiler uses ''
-# as the default value of the argument.
-def hello_world(name=''):
-    print "hello world!"
-    print name
-    return
-
 #Implement the Riemann Sum approximation for integrals.
-def riemann(a, b, N, fn):
-    width = (b - a) / N
-    x_vals = np.arange(a + width, b + width, width)
-    fn_values = fn(x_vals)
-    result = np.sum(width * fn_values)
+
+def riemann(a, b, N, y):
+
+    w = (b - a) / N 
+    #Defines width of the function
+
+    x_vals = np.arange(a + w, b + w, w) 
+    #Assigns all right end x values of all intervals to x_vals
+
+    y_values = y(x_vals)
+    #Assigns all y values to fn_values
+
+    result = np.sum(w * y_values)
+    #sums the area of all intervals and stores into result
+
     return result
+
+# Note: Use lambda to input a function in the y argument of riemann(a, b, N, y).
